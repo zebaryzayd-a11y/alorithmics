@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Algorithmics Iraq — Investment Proposal 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#06060b;--bg2:#0c0c14;--bg3:#12121e;--bg4:#1a1a2e;
+--cyan:#00e5ff;--purple:#8b5cf6;--amber:#f59e0b;--emerald:#10b981;--rose:#f43f5e;
+--text:#eaeaf2;--text2:#7a7a90;--text3:#4a4a5a;
+--glass:rgba(255,255,255,0.03);
+--g1:linear-gradient(135deg,#00e5ff,#8b5cf6);
+--g2:linear-gradient(135deg,#8b5cf6,#f43f5e);
+--g3:linear-gradient(135deg,#10b981,#00e5ff);
+--g4:linear-gradient(135deg,#f59e0b,#f43f5e);
+--font-body:'Sora',sans-serif;
+}
+html{scroll-behavior:smooth}
+html[dir="rtl"]{--font-body:'Noto Kufi Arabic','Sora',sans-serif}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html[dir="rtl"] body{letter-spacing:0}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--cyan);border-radius:3px}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes morph{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes glow{0%,100%{box-shadow:0 0 30px rgba(0,229,255,.15)}50%{box-shadow:0 0 60px rgba(0,229,255,.35)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal.v{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+/* ============ LANG TOGGLE ============ */
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:999;display:flex;background:rgba(0,0,0,.6);backdrop-filter:blur(12px);border:1px solid rgba(0,229,255,.2);border-radius:12px;overflow:hidden}
+html[dir="rtl"] .lang-toggle{right:auto;left:16px}
+.lang-btn{padding:10px 18px;font-size:.75rem;font-weight:700;color:var(--text2);background:transparent;border:none;cursor:pointer;transition:all .3s;font-family:var(--font-body);letter-spacing:.5px}
+.lang-btn.active{color:#fff;background:rgba(0,229,255,.2)}
+
+/* ============ HERO ============ */
+.hero{min-height:100vh;min-height:100dvh;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 24px 40px;overflow:hidden}
+.hero-cosmos{position:absolute;inset:0}
+.hero-cosmos .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.12}
+.blob-1{width:400px;height:400px;background:var(--cyan);top:-15%;right:-10%;animation:morph 20s infinite}
+.blob-2{width:350px;height:350px;background:var(--purple);bottom:-10%;left:-10%;animation:morph 16s infinite reverse}
+.blob-3{width:200px;height:200px;background:var(--amber);top:40%;left:50%;animation:morph 12s infinite 3s}
+.hero-grid{position:absolute;inset:0;background:linear-gradient(rgba(0,229,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.02) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,black,transparent)}
+.particle{position:absolute;width:3px;height:3px;background:var(--cyan);border-radius:50%;animation:float 5s infinite}
+.p1{top:15%;left:12%;opacity:.4}.p2{top:25%;right:15%;animation-delay:1s;opacity:.6;background:var(--purple)}.p3{bottom:30%;left:25%;animation-delay:2s;opacity:.3;background:var(--amber)}.p4{top:55%;right:8%;animation-delay:.5s;opacity:.5}.p5{bottom:15%;right:30%;animation-delay:1.5s;opacity:.4;background:var(--emerald)}.p6{top:10%;left:45%;animation-delay:3s;opacity:.3;background:var(--rose)}
+
+.hero-c{position:relative;z-index:2;max-width:560px}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.15);border-radius:100px;padding:7px 18px;font-size:.65rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:28px;animation:slideUp .7s .3s both}
+html[dir="rtl"] .hero-pill{letter-spacing:0;font-size:.7rem}
+.hero-pill .live{width:6px;height:6px;background:var(--emerald);border-radius:50%;animation:pulse 2s infinite}
+
+h1.hero-title{font-size:2.6rem;font-weight:800;line-height:1.05;letter-spacing:-1.5px;animation:slideUp .7s .5s both}
+html[dir="rtl"] h1.hero-title{letter-spacing:0;line-height:1.3}
+h1 .glow-text{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradShift 5s infinite}
+h1 .sub-line{display:block;font-size:.48em;font-weight:500;color:var(--amber);letter-spacing:1px;margin-top:10px;-webkit-text-fill-color:var(--amber)}
+html[dir="rtl"] h1 .sub-line{letter-spacing:0}
+
+.hero-p{font-size:.92rem;color:var(--text2);line-height:1.75;margin:20px 0 32px;animation:slideUp .7s .7s both}
+html[dir="rtl"] .hero-p{line-height:2}
+
+.hero-btns{display:flex;flex-direction:column;gap:12px;animation:slideUp .7s .9s both}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 28px;border-radius:14px;font-family:var(--font-body);font-size:.9rem;font-weight:600;text-decoration:none;transition:all .35s;border:none;cursor:pointer}
+.btn-glow{background:var(--g1);color:#fff;box-shadow:0 4px 30px rgba(0,229,255,.25)}
+.btn-glow:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,229,255,.45)}
+.btn-ghost{background:var(--glass);color:var(--cyan);border:1px solid rgba(0,229,255,.2);backdrop-filter:blur(8px)}
+
+.hero-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:40px;animation:slideUp .7s 1.1s both}
+.kpi{background:rgba(255,255,255,.03);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:14px 6px;text-align:center}
+.kpi .n{font-family:'JetBrains Mono';font-size:1.5rem;font-weight:700;color:var(--cyan)}
+.kpi .l{font-size:.58rem;color:var(--text2);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px}
+html[dir="rtl"] .kpi .l{letter-spacing:0;font-size:.65rem}
+
+.scroll-i{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text3);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;animation:float 3s infinite}
+.scroll-i span{width:1px;height:28px;background:linear-gradient(var(--cyan),transparent)}
+
+/* ============ SHARED ============ */
+section{padding:80px 20px;position:relative}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:14px}
+html[dir="rtl"] .tag{letter-spacing:0;font-size:.7rem}
+.tag::before{content:'';width:20px;height:1px;background:var(--cyan)}
+html[dir="rtl"] .tag::before{display:none}
+html[dir="rtl"] .tag::after{content:'';width:20px;height:1px;background:var(--cyan)}
+.stitle{font-size:1.9rem;font-weight:800;line-height:1.12;letter-spacing:-.5px;margin-bottom:12px}
+html[dir="rtl"] .stitle{letter-spacing:0;line-height:1.5}
+.stitle .hi{color:var(--cyan)}.stitle .hi2{color:var(--amber)}.stitle .hi3{color:var(--emerald)}
+.sdesc{color:var(--text2);line-height:1.7;font-size:.88rem;margin-bottom:36px;max-width:520px}
+html[dir="rtl"] .sdesc{line-height:2}
+.wrap{max-width:640px;margin:0 auto}
+.wrap-w{max-width:960px;margin:0 auto}
+
+.card{background:var(--bg2);border:1px solid rgba(255,255,255,.05);border-radius:22px;padding:26px 22px;margin-bottom:18px;transition:all .4s}
+.card:hover{border-color:rgba(0,229,255,.15)}
+.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.card-t{font-size:1.05rem;font-weight:700}
+.badge{font-family:'JetBrains Mono';font-size:.65rem;padding:4px 12px;border-radius:8px}
+.badge-c{background:rgba(0,229,255,.1);color:var(--cyan)}
+.badge-g{background:rgba(16,185,129,.1);color:var(--emerald)}
+.badge-a{background:rgba(245,158,11,.1);color:var(--amber)}
+
+/* ============ ABOUT ============ */
+.about{background:var(--bg2)}
+.about-hero-img{width:100%;height:220px;border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;border:1px solid rgba(255,255,255,.05)}
+.about-hero-img img{width:100%;height:100%;object-fit:cover}
+.about-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg2),transparent 60%)}
+.about-hero-img .ab-badge{position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);border:1px solid rgba(0,229,255,.25);border-radius:10px;padding:8px 14px;font-size:.7rem;color:var(--cyan);font-weight:600;z-index:2}
+html[dir="rtl"] .about-hero-img .ab-badge{left:auto;right:14px}
+
+.feat-grid{display:grid;gap:14px;margin-top:28px}
+.feat{background:var(--glass);border:1px solid rgba(255,255,255,.04);border-radius:18px;padding:22px;transition:all .4s}
+.feat:hover{border-color:rgba(0,229,255,.2);transform:translateY(-3px)}
+.feat-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.fi1{background:linear-gradient(135deg,rgba(0,229,255,.15),rgba(0,229,255,.03))}
+.fi2{background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(139,92,246,.03))}
+.fi3{background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(245,158,11,.03))}
+.fi4{background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.03))}
+.feat h4{font-size:.95rem;font-weight:700;margin-bottom:6px}
+.feat p{font-size:.78rem;color:var(--text2);line-height:1.6}
+html[dir="rtl"] .feat p{line-height:1.9}
+
+/* ============ TRACTION ============ */
+.traction{background:var(--bg)}
+.traction-banner{background:linear-gradient(135deg,rgba(0,229,255,.06),rgba(139,92,246,.06));border:1px solid rgba(0,229,255,.12);border-radius:22px;padding:28px 22px;text-align:center;margin-bottom:20px}
+.traction-banner .big-num{font-family:'JetBrains Mono';font-size:2.8rem;font-weight:700;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.traction-banner .big-label{color:var(--text2);font-size:.82rem;margin-top:2px}
+.traction-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+.t-stat{background:var(--glass);border-radius:14px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,.03)}
+.t-stat .v{font-family:'JetBrains Mono';font-size:1.3rem;font-weight:700}
+.t-stat .l{font-size:.58rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+html[dir="rtl"] .t-stat .l{letter-spacing:0;font-size:.65rem}
+.vc{color:var(--cyan)}.vg{color:var(--emerald)}.va{color:var(--amber)}.vp{color:var(--purple)}
+
+/* ============ PROJECTIONS ============ */
+.proj{background:var(--bg2)}
+.proj-mega{border-radius:24px;overflow:hidden;margin-bottom:22px;border:1px solid rgba(255,255,255,.05);background:var(--bg3);position:relative}
+.proj-mega::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;z-index:3}
+.pm1::before{background:var(--g1)}.pm2::before{background:var(--g4)}.pm3::before{background:var(--g3)}
+.proj-mega-img{width:100%;height:180px;position:relative;overflow:hidden}
+.proj-mega-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.proj-mega:hover .proj-mega-img img{transform:scale(1.05)}
+.proj-mega-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg3) 8%,transparent 55%)}
+.proj-mega-img .city-label{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border-radius:8px;padding:6px 12px;font-size:.65rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;z-index:2}
+html[dir="rtl"] .proj-mega-img .city-label{left:auto;right:14px;letter-spacing:0}
+.cl1{color:var(--cyan);border:1px solid rgba(0,229,255,.3)}
+.cl2{color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.cl3{color:var(--emerald);border:1px solid rgba(16,185,129,.3)}
+.proj-body{padding:22px;margin-top:-24px;position:relative;z-index:2}
+.proj-body h3{font-size:1.5rem;font-weight:800;margin-bottom:4px}
+.proj-body .sub{font-size:.75rem;color:var(--text2);margin-bottom:16px}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pg{background:rgba(255,255,255,.03);border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,.03)}
+.pg .pv{font-family:'JetBrains Mono';font-size:1rem;font-weight:700}
+.pg .pl{font-size:.58rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+html[dir="rtl"] .pg .pl{letter-spacing:0;font-size:.62rem}
+.proj-note{margin-top:14px;font-size:.75rem;color:var(--text2);line-height:1.6;padding:12px;background:rgba(255,255,255,.02);border-radius:10px;border-left:3px solid}
+html[dir="rtl"] .proj-note{border-left:none;border-right:3px solid;line-height:1.9}
+html[dir="rtl"] .proj-note.pn1{border-right-color:var(--cyan)}
+html[dir="rtl"] .proj-note.pn2{border-right-color:var(--amber)}
+html[dir="rtl"] .proj-note.pn3{border-right-color:var(--emerald)}
+.pn1{border-color:var(--cyan)}.pn2{border-color:var(--amber)}.pn3{border-color:var(--emerald)}
+
+/* ============ COMBINED ============ */
+.combined{background:var(--bg)}
+.proj-bar-wrap{margin:20px 0}
+.proj-bar-item{margin-bottom:16px}
+.proj-bar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.proj-bar-head .city{font-size:.82rem;font-weight:600}
+.proj-bar-head .amt{font-family:'JetBrains Mono';font-size:.8rem;font-weight:700}
+.proj-track{height:10px;background:rgba(255,255,255,.04);border-radius:10px;overflow:hidden}
+.proj-fill{height:100%;border-radius:10px;transition:width 2s cubic-bezier(.16,1,.3,1)}
+
+.profit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:24px 0}
+.profit-cell{text-align:center;padding:18px 8px;border-radius:16px;border:1px solid rgba(255,255,255,.04);background:var(--glass)}
+.profit-cell .pf-city{font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text2);margin-bottom:6px}
+html[dir="rtl"] .profit-cell .pf-city{letter-spacing:0}
+.profit-cell .pf-val{font-family:'JetBrains Mono';font-size:1.2rem;font-weight:700;color:var(--emerald)}
+.profit-cell .pf-label{font-size:.58rem;color:var(--text3);margin-top:2px}
+
+/* ============ REASONS ============ */
+.summer{background:var(--bg2)}
+.reason{display:flex;gap:14px;align-items:flex-start;padding:18px;background:var(--glass);border:1px solid rgba(255,255,255,.04);border-radius:16px;margin-bottom:10px;transition:all .3s}
+.reason:hover{border-color:rgba(0,229,255,.15);background:rgba(0,229,255,.02)}
+.reason-n{font-family:'JetBrains Mono';font-size:1.6rem;font-weight:700;color:var(--cyan);opacity:.35;min-width:32px;line-height:1}
+.reason h4{font-size:.88rem;font-weight:700;margin-bottom:3px}
+.reason p{font-size:.76rem;color:var(--text2);line-height:1.6}
+html[dir="rtl"] .reason p{line-height:1.9}
+
+/* ============ GALLERY ============ */
+.gallery{background:var(--bg)}
+.g-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.g-item{border-radius:14px;overflow:hidden;height:150px;position:relative;border:1px solid rgba(255,255,255,.04)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.g-item:hover img{transform:scale(1.08)}
+.g-item.wide{grid-column:span 2;height:180px}
+.g-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,11,.5),transparent 50%)}
+.g-item .g-cap{position:absolute;bottom:10px;left:12px;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.85);z-index:2}
+html[dir="rtl"] .g-item .g-cap{left:auto;right:12px}
+
+/* ============ CTA ============ */
+.cta{background:var(--bg2);text-align:center;padding:80px 20px}
+.cta-box{background:linear-gradient(135deg,rgba(0,229,255,.04),rgba(139,92,246,.04));border:1px solid rgba(0,229,255,.12);border-radius:28px;padding:48px 24px;position:relative;overflow:hidden;max-width:560px;margin:0 auto}
+.cta-box::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(0,229,255,.06),transparent 70%);top:-100px;right:-80px}
+.cta-box h2{font-size:1.9rem;font-weight:800;margin-bottom:8px}
+html[dir="rtl"] .cta-box h2{line-height:1.5}
+.cta-box h2 .glow-text{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-note{font-size:.82rem;color:var(--text2);line-height:1.7;margin-bottom:28px;max-width:380px;margin-left:auto;margin-right:auto}
+html[dir="rtl"] .cta-note{line-height:2}
+.cta-note em{color:var(--amber);font-style:normal;font-weight:600}
+.cta-btns{display:flex;flex-direction:column;gap:10px;max-width:300px;margin:0 auto}
+.cta-fine{margin-top:20px;font-size:.62rem;color:var(--text3);line-height:1.6;max-width:300px;margin-left:auto;margin-right:auto}
+html[dir="rtl"] .cta-fine{line-height:1.9}
+
+footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.03);padding:36px 20px;text-align:center}
+footer .f-logo{font-size:1.1rem;font-weight:800;margin-bottom:6px}
+footer .f-logo span{color:var(--cyan)}
+footer p{font-size:.68rem;color:var(--text3);line-height:1.8}
+
+.watermark{position:fixed;bottom:10px;right:10px;font-size:.5rem;color:rgba(255,255,255,.06);letter-spacing:2px;text-transform:uppercase;z-index:100;writing-mode:vertical-rl}
+html[dir="rtl"] .watermark{right:auto;left:10px}
+
+/* Timeline RTL fix */
+html[dir="rtl"] .tl-line{border-left:none !important;border-right:2px solid rgba(0,229,255,.15);padding-left:0 !important;padding-right:28px !important}
+html[dir="rtl"] .tl-dot{left:auto !important;right:-34px !important}
+
+@media(min-width:480px){
+  h1.hero-title{font-size:3rem}
+  .stitle{font-size:2.2rem}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .traction-row{grid-template-columns:repeat(4,1fr)}
+}
+@media(min-width:768px){
+  section{padding:100px 40px}
+  h1.hero-title{font-size:3.5rem}
+  .proj-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .proj-mega{margin-bottom:0}
+  .g-grid{grid-template-columns:1fr 1fr 1fr}
+  .g-item.wide{grid-column:span 1;height:200px}
+}
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE TOGGLE -->
+<div class="lang-toggle">
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">عربي</button>
+</div>
+
+<div class="watermark" data-i="watermark">CONFIDENTIAL</div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-cosmos"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+  <div class="hero-grid"></div>
+  <div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div>
+  <div class="particle p4"></div><div class="particle p5"></div><div class="particle p6"></div>
+
+  <div class="hero-c">
+    <div class="hero-pill"><span class="live"></span> <span data-i="hero_pill">Confidential Investment Proposal · 2026</span></div>
+    <h1 class="hero-title">
+      <span class="glow-text">Algorithmics</span>
+      <span class="sub-line" data-i="hero_sub_line">International School of Programming — Iraq</span>
+    </h1>
+    <p class="hero-p" data-i="hero_p">Bringing world-class coding education to Iraq's youth. Expanding across three cities with zero competition, proven demand, and massive summer growth ahead.</p>
+    <div class="hero-btns">
+      <a href="#projections" class="btn btn-glow" data-i="hero_btn1">🚀 See Growth Projections</a>
+      <a href="#invest" class="btn btn-ghost" data-i="hero_btn2">💼 Investment Terms</a>
+    </div>
+    <div class="hero-kpi">
+      <div class="kpi"><div class="n">3</div><div class="l" data-i="kpi_cities">Cities</div></div>
+      <div class="kpi"><div class="n">3000+</div><div class="l" data-i="kpi_pipeline">Student Pipeline</div></div>
+      <div class="kpi"><div class="n">0</div><div class="l" data-i="kpi_comp">Competitors</div></div>
+    </div>
+  </div>
+  <div class="scroll-i"><span></span><span data-i="scroll">Scroll</span></div>
+</section>
+
+<!-- ==================== ABOUT ==================== -->
+<section class="about">
+  <div class="wrap">
+    <div class="about-hero-img reveal">
+      <img src="kids_coding.jpg" alt="Kids coding">
+      <div class="ab-badge" data-i="ab_badge">🌍 80+ Countries Worldwide</div>
+    </div>
+    <div class="tag reveal" data-i="about_tag">About Algorithmics</div>
+    <h2 class="stitle reveal" data-i="about_title">The World's Leading <span class="hi">Coding School</span> for Kids</h2>
+    <p class="sdesc reveal" data-i="about_desc">Algorithmics is an international franchise in 80+ countries, teaching children aged 5–17 to code through a gamified, world-class curriculum. We launched in Duhok, Iraq in September 2025 — and are now expanding rapidly across the region.</p>
+
+    <div class="feat-grid">
+      <div class="feat reveal d1"><div class="feat-ico fi1">🧠</div><h4 data-i="f1_t">AI & Python Courses</h4><p data-i="f1_p">Advanced curriculum for teens: artificial intelligence, Python, and real-world programming skills.</p></div>
+      <div class="feat reveal d2"><div class="feat-ico fi2">🎮</div><h4 data-i="f2_t">Visual Programming</h4><p data-i="f2_p">Gamified Scratch-based courses for younger students — building logic through interactive game design.</p></div>
+      <div class="feat reveal d3"><div class="feat-ico fi3">🏫</div><h4 data-i="f3_t">School Partnerships</h4><p data-i="f3_p">Partnered with Aynda Private Schools (Duhok) and Al-Sharqia Schools Chain with 3,000+ students (Mosul).</p></div>
+      <div class="feat reveal d4"><div class="feat-ico fi4">🏆</div><h4 data-i="f4_t">Zero Competition</h4><p data-i="f4_p">No coding schools for children exist across Duhok, Zakho, or Mosul. A completely untapped blue ocean.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TRACTION ==================== -->
+<section class="traction">
+  <div class="wrap">
+    <div class="tag reveal" data-i="tr_tag">Current Traction</div>
+    <h2 class="stitle reveal" data-i="tr_title">Proven Demand <span class="hi">From Day One</span></h2>
+    <p class="sdesc reveal" data-i="tr_desc">Launched September 2025 in Duhok. Within months we validated the market — and this is only the beginning.</p>
+
+    <div class="traction-banner reveal">
+      <div class="big-num">$14,900</div>
+      <div class="big-label" data-i="tr_label">Total Revenue Pipeline · Duhok Only · 7 Months In</div>
+    </div>
+
+    <div class="traction-row reveal">
+      <div class="t-stat"><div class="v vc">25</div><div class="l" data-i="tr_s1">Active Students</div></div>
+      <div class="t-stat"><div class="v va">3</div><div class="l" data-i="tr_s2">Course Types</div></div>
+      <div class="t-stat"><div class="v vg">+5</div><div class="l" data-i="tr_s3">New Signups</div></div>
+      <div class="t-stat"><div class="v vp">7 Mo.</div><div class="l" data-i="tr_s4">Since Launch</div></div>
+    </div>
+
+    <p style="text-align:center;font-size:.76rem;color:var(--text2);margin-top:20px;line-height:1.7" class="reveal" data-i="tr_note">All of this from Duhok alone — before summer holiday, before school partnerships fully activate, and before expanding to two completely new cities. The real growth story begins now. ↓</p>
+  </div>
+</section>
+
+<!-- ==================== CITY PROJECTIONS ==================== -->
+<section class="proj" id="projections">
+  <div class="wrap-w">
+    <div class="tag reveal" data-i="proj_tag">City-by-City Projections</div>
+    <h2 class="stitle reveal" data-i="proj_title">Three Cities, <span class="hi2">Massive Potential</span></h2>
+    <p class="sdesc reveal" data-i="proj_desc">Each city is a unique growth engine. Together they create a powerful, diversified expansion with enormous upside.</p>
+
+    <div class="proj-row">
+      <!-- DUHOK -->
+      <div class="proj-mega pm1 reveal d1">
+        <div class="proj-mega-img">
+          <img src="duhok.jpg" alt="Duhok">
+          <div class="city-label cl1" data-i="cl_est">Established</div>
+        </div>
+        <div class="proj-body">
+          <h3 style="color:var(--cyan)" data-i="duhok_name">Duhok</h3>
+          <div class="sub" data-i="duhok_sub">Operating since Sept 2025 · Aynda Private School 1 & 2</div>
+          <div class="proj-grid">
+            <div class="pg"><div class="pv vc">25</div><div class="pl" data-i="pg_current">Current Students</div></div>
+            <div class="pg"><div class="pv va">Summer 📈</div><div class="pl" data-i="pg_surge">Enrollment Surge</div></div>
+            <div class="pg"><div class="pv vg">$500–600</div><div class="pl" data-i="pg_rev">Revenue / Student</div></div>
+            <div class="pg"><div class="pv" style="color:var(--emerald)">$200–250</div><div class="pl" data-i="pg_profit">Net Profit / Student</div></div>
+          </div>
+          <div class="proj-note pn1" data-i="duhok_note">First summer season ever + Aynda Private School 1 & 2 as direct student pipelines. Summer is peak demand for children's enrichment in Iraq — significant enrollment surge expected.</div>
+        </div>
+      </div>
+
+      <!-- ZAKHO -->
+      <div class="proj-mega pm2 reveal d2">
+        <div class="proj-mega-img">
+          <img src="zakho.jfif" alt="Zakho">
+          <div class="city-label cl2" data-i="cl_new">New Market</div>
+        </div>
+        <div class="proj-body">
+          <h3 style="color:var(--amber)" data-i="zakho_name">Zakho</h3>
+          <div class="sub" data-i="zakho_sub">Summer 2026 Launch · Virgin Market · Zero Competition</div>
+          <div class="proj-grid">
+            <div class="pg"><div class="pv va">NEW</div><div class="pl" data-i="pg_entry">Market Entry</div></div>
+            <div class="pg"><div class="pv va">0</div><div class="pl" data-i="pg_comp">Competitors</div></div>
+            <div class="pg"><div class="pv vg">$500–600</div><div class="pl" data-i="pg_rev">Revenue / Student</div></div>
+            <div class="pg"><div class="pv" style="color:var(--emerald)">$200–250</div><div class="pl" data-i="pg_profit">Net Profit / Student</div></div>
+          </div>
+          <div class="proj-note pn2" data-i="zakho_note">Same strong unit economics as Duhok. Zakho is an education-focused city with high parental investment in children. Complete first-mover advantage — we own the market from day one.</div>
+        </div>
+      </div>
+
+      <!-- MOSUL -->
+      <div class="proj-mega pm3 reveal d3">
+        <div class="proj-mega-img">
+          <img src="mosul.jfif" alt="Mosul">
+          <div class="city-label cl3" data-i="cl_vol">High Volume</div>
+        </div>
+        <div class="proj-body">
+          <h3 style="color:var(--emerald)" data-i="mosul_name">Mosul</h3>
+          <div class="sub" data-i="mosul_sub">Al-Sharqia Schools Chain · 3,000+ Students · Instant Pipeline</div>
+          <div class="proj-grid">
+            <div class="pg"><div class="pv" style="color:var(--emerald)">3,000+</div><div class="pl" data-i="pg_pool">Student Pool</div></div>
+            <div class="pg"><div class="pv va">20%+</div><div class="pl" data-i="pg_target">Target Enrollment</div></div>
+            <div class="pg"><div class="pv" style="color:var(--emerald)">600+</div><div class="pl" data-i="pg_proj">Projected Students</div></div>
+            <div class="pg"><div class="pv" style="color:var(--emerald)">$100–180</div><div class="pl" data-i="pg_profit">Net Profit / Student</div></div>
+          </div>
+          <div class="proj-note pn3" data-i="mosul_note">Launching directly inside Al-Sharqia Schools Chain with 3,000+ students. Targeting 20%+ enrollment. Pricing is lower than Duhok to match Mosul's market — but the massive volume creates the biggest total profit opportunity across all three cities.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COMBINED ==================== -->
+<section class="combined">
+  <div class="wrap">
+    <div class="tag reveal" data-i="comb_tag">Combined Outlook</div>
+    <h2 class="stitle reveal" data-i="comb_title">The <span class="hi3">Full Picture</span></h2>
+    <p class="sdesc reveal" data-i="comb_desc">Projected revenue contribution and profit potential across the three-city expansion.</p>
+
+    <div class="card reveal">
+      <div class="card-head">
+        <div class="card-t" data-i="bar_t">📊 Projected Revenue Weight</div>
+        <div class="badge badge-g">SUMMER 2026+</div>
+      </div>
+      <div class="proj-bar-wrap">
+        <div class="proj-bar-item">
+          <div class="proj-bar-head"><span class="city" style="color:var(--cyan)" data-i="bar1">🏙️ Duhok — Established + Summer Growth</span><span class="amt vc">●●●○○</span></div>
+          <div class="proj-track"><div class="proj-fill" style="width:35%;background:var(--g1)"></div></div>
+        </div>
+        <div class="proj-bar-item">
+          <div class="proj-bar-head"><span class="city" style="color:var(--amber)" data-i="bar2">🏙️ Zakho — New Launch, Premium Pricing</span><span class="amt va">●●○○○</span></div>
+          <div class="proj-track"><div class="proj-fill" style="width:22%;background:var(--g4)"></div></div>
+        </div>
+        <div class="proj-bar-item">
+          <div class="proj-bar-head"><span class="city" style="color:var(--emerald)" data-i="bar3">🏙️ Mosul — Volume Play via Al-Sharqia</span><span class="amt vg">●●●●●</span></div>
+          <div class="proj-track"><div class="proj-fill" style="width:100%;background:var(--g3)"></div></div>
+        </div>
+      </div>
+      <p style="font-size:.72rem;color:var(--text3);text-align:center" data-i="bar_note">Mosul's access to 3,000+ students through Al-Sharqia makes it the dominant revenue source despite lower per-student pricing</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-head"><div class="card-t" data-i="profit_t">💵 Net Profit Per Student</div></div>
+      <div class="profit-grid">
+        <div class="profit-cell"><div class="pf-city" data-i="duhok_name">Duhok</div><div class="pf-val">$200–250</div><div class="pf-label" data-i="per_st">Per Student</div></div>
+        <div class="profit-cell"><div class="pf-city" data-i="zakho_name">Zakho</div><div class="pf-val">$200–250</div><div class="pf-label" data-i="per_st">Per Student</div></div>
+        <div class="profit-cell"><div class="pf-city" data-i="mosul_name">Mosul</div><div class="pf-val">$100–180</div><div class="pf-label" data-i="per_st">Per Student</div></div>
+      </div>
+      <p style="font-size:.75rem;color:var(--text2);line-height:1.6;text-align:center;margin-top:8px" data-i="profit_note">Every additional student adds directly to the bottom line. Mosul's lower margin is offset by the sheer volume of 600+ projected students from a single partnership.</p>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="card reveal">
+      <div class="card-head"><div class="card-t" data-i="road_t">🗺️ Growth Roadmap</div></div>
+      <div style="position:relative;padding:20px 0">
+        <div class="tl-line" style="position:relative;padding-left:28px;border-left:2px solid rgba(0,229,255,.15)">
+          <div style="margin-bottom:26px;position:relative">
+            <div class="tl-dot" style="position:absolute;left:-34px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--cyan);border:2px solid var(--bg2)"></div>
+            <div style="font-size:.62rem;color:var(--cyan);text-transform:uppercase;letter-spacing:1.5px;font-weight:600" data-i="tl1_date">Sept 2025 — Now</div>
+            <div style="font-size:.9rem;font-weight:700;margin:4px 0 3px" data-i="tl1_t">Duhok Launch ✅</div>
+            <div style="font-size:.76rem;color:var(--text2)" data-i="tl1_p">25 students, $14,900 pipeline. Market validated. Partnerships with Aynda Private School 1 & 2 secured.</div>
+          </div>
+          <div style="margin-bottom:26px;position:relative">
+            <div class="tl-dot" style="position:absolute;left:-34px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--amber);border:2px solid var(--bg2)"></div>
+            <div style="font-size:.62rem;color:var(--amber);text-transform:uppercase;letter-spacing:1.5px;font-weight:600" data-i="tl2_date">Summer 2026</div>
+            <div style="font-size:.9rem;font-weight:700;margin:4px 0 3px" data-i="tl2_t">Triple Expansion 🚀</div>
+            <div style="font-size:.76rem;color:var(--text2)" data-i="tl2_p">First summer season in Duhok. Zakho and Mosul launch simultaneously. Al-Sharqia partnership (3,000+ students) goes live. Massive enrollment expected.</div>
+          </div>
+          <div style="margin-bottom:26px;position:relative">
+            <div class="tl-dot" style="position:absolute;left:-34px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--emerald);border:2px solid var(--bg2)"></div>
+            <div style="font-size:.62rem;color:var(--emerald);text-transform:uppercase;letter-spacing:1.5px;font-weight:600" data-i="tl3_date">Fall 2026</div>
+            <div style="font-size:.9rem;font-weight:700;margin:4px 0 3px" data-i="tl3_t">Three-City Operations</div>
+            <div style="font-size:.76rem;color:var(--text2)" data-i="tl3_p">All cities fully operational. Recurring revenue as students progress through multi-level courses. Compounding retention across semesters.</div>
+          </div>
+          <div style="position:relative">
+            <div class="tl-dot" style="position:absolute;left:-34px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--purple);border:2px solid var(--bg2);animation:pulse 2s infinite"></div>
+            <div style="font-size:.62rem;color:var(--purple);text-transform:uppercase;letter-spacing:1.5px;font-weight:600">2027+</div>
+            <div style="font-size:.9rem;font-weight:700;margin:4px 0 3px" data-i="tl4_t">Scale Across Iraq</div>
+            <div style="font-size:.76rem;color:var(--text2)" data-i="tl4_p">Expand to more cities. Deepen school partnerships. Build brand dominance as Iraq's undisputed #1 coding education provider for children.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 6 REASONS ==================== -->
+<section class="summer">
+  <div class="wrap">
+    <div class="tag reveal" data-i="sum_tag">Growth Catalysts</div>
+    <h2 class="stitle reveal" data-i="sum_title">6 Reasons This Summer <span class="hi2">Changes Everything</span></h2>
+    <p class="sdesc reveal" data-i="sum_desc">Multiple growth catalysts are converging at the same time.</p>
+
+    <div class="reason reveal"><div class="reason-n">01</div><div><h4 data-i="r1_t">First Summer Season Ever</h4><p data-i="r1_p">We launched Sept 2025. This is our very first summer — when families across Iraq actively seek enrichment activities for their children during the long holiday.</p></div></div>
+    <div class="reason reveal"><div class="reason-n">02</div><div><h4 data-i="r2_t">Two Brand-New City Launches</h4><p data-i="r2_p">Zakho and Mosul are virgin markets with zero coding education options. We're creating the entire category with massive first-mover advantage.</p></div></div>
+    <div class="reason reveal"><div class="reason-n">03</div><div><h4 data-i="r3_t">Al-Sharqia Schools Chain — 3,000+ Students</h4><p data-i="r3_p">In Mosul, we're launching directly inside Al-Sharqia Schools with 3,000+ enrolled students. We're targeting 20%+ enrollment — that's 600+ students from one partnership alone.</p></div></div>
+    <div class="reason reveal"><div class="reason-n">04</div><div><h4 data-i="r4_t">Aynda Private School 1 & 2 Partnership</h4><p data-i="r4_p">In Duhok, both Aynda campuses are now active student pipelines — feeding families who already invest in premium education directly into our programs.</p></div></div>
+    <div class="reason reveal"><div class="reason-n">05</div><div><h4 data-i="r5_t">Zero Competitors in All 3 Cities</h4><p data-i="r5_p">No coding school for children exists in Duhok, Zakho, or Mosul. We aren't competing — we're building a category from scratch with total market ownership.</p></div></div>
+    <div class="reason reveal"><div class="reason-n">06</div><div><h4 data-i="r6_t">Proven Per-Student Profitability</h4><p data-i="r6_p">$500–600 revenue / $200–250 net profit in Duhok & Zakho. $100–180 net profit in Mosul. Each student adds directly to the bottom line with minimal marginal cost.</p></div></div>
+  </div>
+</section>
+
+<!-- ==================== GALLERY ==================== -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="tag reveal" data-i="gal_tag">Our World</div>
+    <h2 class="stitle reveal" data-i="gal_title">Where <span class="hi">Future Builders</span> Learn</h2>
+    <div class="g-grid" style="margin-top:28px">
+      <div class="g-item wide reveal"><img src="modern%20learning%20spaces.jpg" alt="Classroom"><div class="g-cap" data-i="gc1">Modern learning spaces</div></div>
+      <div class="g-item reveal d1"><img src="tablet.jpg" alt="Tablet"><div class="g-cap" data-i="gc2">Interactive tools</div></div>
+      <div class="g-item reveal d2"><img src="students.jpg" alt="Students"><div class="g-cap" data-i="gc3">Engaged students</div></div>
+      <div class="g-item reveal d3"><img src="coding.jpg" alt="Coding"><div class="g-cap" data-i="gc4">Hands-on coding</div></div>
+      <div class="g-item reveal d4"><img src="kids_gallery.jpg" alt="Kids"><div class="g-cap" data-i="gc5">Ages 5–17</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section class="cta" id="invest">
+  <div class="cta-box reveal">
+    <div class="tag" style="justify-content:center" data-i="cta_tag">Next Steps</div>
+    <h2 data-i="cta_h2">Let's Build <span class="glow-text">The Future</span></h2>
+    <p class="cta-note" data-i="cta_note"><em>Investment price and quantity will be discussed and negotiated during our first meeting.</em><br><br>We're inviting strategic investors to join a ground-floor opportunity with proven demand, zero competition, and explosive growth ahead across three Iraqi cities.</p>
+    <div class="cta-btns">
+      <a href="tel:+9647506664321" class="btn btn-glow" style="font-size:1rem;padding:18px" data-i="cta_call">📞 Call Us Now</a>
+      <a href="#projections" class="btn btn-ghost" data-i="cta_review">📊 Review Projections</a>
+    </div>
+    <p class="cta-fine" data-i="cta_fine">This document is confidential and intended solely for the recipient. All figures based on actual operational data as of April 2026. Projections represent management estimates based on confirmed partnerships and market conditions.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><span>Algorithmics</span> Iraq</div>
+  <p data-i="footer_p">Duhok · Zakho · Mosul<br>International School of Programming<br><br><span style="opacity:.4">© 2026 Algorithmics Iraq · All Rights Reserved</span></p>
+</footer>
+
+<script>
+const T = {
+  en: {
+    watermark: "CONFIDENTIAL",
+    hero_pill: "Confidential Investment Proposal · 2026",
+    hero_sub_line: "International School of Programming — Iraq",
+    hero_p: "Bringing world-class coding education to Iraq's youth. Expanding across three cities with zero competition, proven demand, and massive summer growth ahead.",
+    hero_btn1: "🚀 See Growth Projections",
+    hero_btn2: "💼 Investment Terms",
+    kpi_cities: "Cities",
+    kpi_pipeline: "Student Pipeline",
+    kpi_comp: "Competitors",
+    scroll: "Scroll",
+    ab_badge: "🌍 80+ Countries Worldwide",
+    about_tag: "About Algorithmics",
+    about_title: 'The World\'s Leading <span class="hi">Coding School</span> for Kids',
+    about_desc: "Algorithmics is an international franchise in 80+ countries, teaching children aged 5–17 to code through a gamified, world-class curriculum. We launched in Duhok, Iraq in September 2025 — and are now expanding rapidly across the region.",
+    f1_t: "AI & Python Courses",
+    f1_p: "Advanced curriculum for teens: artificial intelligence, Python, and real-world programming skills.",
+    f2_t: "Visual Programming",
+    f2_p: "Gamified Scratch-based courses for younger students — building logic through interactive game design.",
+    f3_t: "School Partnerships",
+    f3_p: "Partnered with Aynda Private Schools (Duhok) and Al-Sharqia Schools Chain with 3,000+ students (Mosul).",
+    f4_t: "Zero Competition",
+    f4_p: "No coding schools for children exist across Duhok, Zakho, or Mosul. A completely untapped blue ocean.",
+    tr_tag: "Current Traction",
+    tr_title: 'Proven Demand <span class="hi">From Day One</span>',
+    tr_desc: "Launched September 2025 in Duhok. Within months we validated the market — and this is only the beginning.",
+    tr_label: "Total Revenue Pipeline · Duhok Only · 7 Months In",
+    tr_s1: "Active Students", tr_s2: "Course Types", tr_s3: "New Signups", tr_s4: "Since Launch",
+    tr_note: "All of this from Duhok alone — before summer holiday, before school partnerships fully activate, and before expanding to two completely new cities. The real growth story begins now. ↓",
+    proj_tag: "City-by-City Projections",
+    proj_title: 'Three Cities, <span class="hi2">Massive Potential</span>',
+    proj_desc: "Each city is a unique growth engine. Together they create a powerful, diversified expansion with enormous upside.",
+    cl_est: "Established", cl_new: "New Market", cl_vol: "High Volume",
+    duhok_name: "Duhok", zakho_name: "Zakho", mosul_name: "Mosul",
+    duhok_sub: "Operating since Sept 2025 · Aynda Private School 1 & 2",
+    zakho_sub: "Summer 2026 Launch · Virgin Market · Zero Competition",
+    mosul_sub: "Al-Sharqia Schools Chain · 3,000+ Students · Instant Pipeline",
+    pg_current: "Current Students", pg_surge: "Enrollment Surge", pg_rev: "Revenue / Student", pg_profit: "Net Profit / Student",
+    pg_entry: "Market Entry", pg_comp: "Competitors", pg_pool: "Student Pool", pg_target: "Target Enrollment", pg_proj: "Projected Students",
+    duhok_note: "First summer season ever + Aynda Private School 1 & 2 as direct student pipelines. Summer is peak demand for children's enrichment in Iraq — significant enrollment surge expected.",
+    zakho_note: "Same strong unit economics as Duhok. Zakho is an education-focused city with high parental investment in children. Complete first-mover advantage — we own the market from day one.",
+    mosul_note: "Launching directly inside Al-Sharqia Schools Chain with 3,000+ students. Targeting 20%+ enrollment. Pricing is lower than Duhok to match Mosul's market — but the massive volume creates the biggest total profit opportunity across all three cities.",
+    comb_tag: "Combined Outlook", comb_title: 'The <span class="hi3">Full Picture</span>',
+    comb_desc: "Projected revenue contribution and profit potential across the three-city expansion.",
+    bar_t: "📊 Projected Revenue Weight",
+    bar1: "🏙️ Duhok — Established + Summer Growth",
+    bar2: "🏙️ Zakho — New Launch, Premium Pricing",
+    bar3: "🏙️ Mosul — Volume Play via Al-Sharqia",
+    bar_note: "Mosul's access to 3,000+ students through Al-Sharqia makes it the dominant revenue source despite lower per-student pricing",
+    profit_t: "💵 Net Profit Per Student", per_st: "Per Student",
+    profit_note: "Every additional student adds directly to the bottom line. Mosul's lower margin is offset by the sheer volume of 600+ projected students from a single partnership.",
+    road_t: "🗺️ Growth Roadmap",
+    tl1_date: "Sept 2025 — Now", tl1_t: "Duhok Launch ✅", tl1_p: "25 students, $14,900 pipeline. Market validated. Partnerships with Aynda Private School 1 & 2 secured.",
+    tl2_date: "Summer 2026", tl2_t: "Triple Expansion 🚀", tl2_p: "First summer season in Duhok. Zakho and Mosul launch simultaneously. Al-Sharqia partnership (3,000+ students) goes live. Massive enrollment expected.",
+    tl3_date: "Fall 2026", tl3_t: "Three-City Operations", tl3_p: "All cities fully operational. Recurring revenue as students progress through multi-level courses. Compounding retention across semesters.",
+    tl4_t: "Scale Across Iraq", tl4_p: "Expand to more cities. Deepen school partnerships. Build brand dominance as Iraq's undisputed #1 coding education provider for children.",
+    sum_tag: "Growth Catalysts",
+    sum_title: '6 Reasons This Summer <span class="hi2">Changes Everything</span>',
+    sum_desc: "Multiple growth catalysts are converging at the same time.",
+    r1_t: "First Summer Season Ever", r1_p: "We launched Sept 2025. This is our very first summer — when families across Iraq actively seek enrichment activities for their children during the long holiday.",
+    r2_t: "Two Brand-New City Launches", r2_p: "Zakho and Mosul are virgin markets with zero coding education options. We're creating the entire category with massive first-mover advantage.",
+    r3_t: "Al-Sharqia Schools Chain — 3,000+ Students", r3_p: "In Mosul, we're launching directly inside Al-Sharqia Schools with 3,000+ enrolled students. We're targeting 20%+ enrollment — that's 600+ students from one partnership alone.",
+    r4_t: "Aynda Private School 1 & 2 Partnership", r4_p: "In Duhok, both Aynda campuses are now active student pipelines — feeding families who already invest in premium education directly into our programs.",
+    r5_t: "Zero Competitors in All 3 Cities", r5_p: "No coding school for children exists in Duhok, Zakho, or Mosul. We aren't competing — we're building a category from scratch with total market ownership.",
+    r6_t: "Proven Per-Student Profitability", r6_p: "$500–600 revenue / $200–250 net profit in Duhok & Zakho. $100–180 net profit in Mosul. Each student adds directly to the bottom line with minimal marginal cost.",
+    gal_tag: "Our World", gal_title: 'Where <span class="hi">Future Builders</span> Learn',
+    gc1: "Modern learning spaces", gc2: "Interactive tools", gc3: "Engaged students", gc4: "Hands-on coding", gc5: "Ages 5–17",
+    cta_tag: "Next Steps", cta_h2: 'Let\'s Build <span class="glow-text">The Future</span>',
+    cta_note: '<em>Investment price and quantity will be discussed and negotiated during our first meeting.</em><br><br>We\'re inviting strategic investors to join a ground-floor opportunity with proven demand, zero competition, and explosive growth ahead across three Iraqi cities.',
+    cta_call: "📞 Call Us Now", cta_review: "📊 Review Projections",
+    cta_fine: "This document is confidential and intended solely for the recipient. All figures based on actual operational data as of April 2026. Projections represent management estimates based on confirmed partnerships and market conditions.",
+    footer_p: 'Duhok · Zakho · Mosul<br>International School of Programming<br><br><span style="opacity:.4">© 2026 Algorithmics Iraq · All Rights Reserved</span>'
+  },
+  ar: {
+    watermark: "سري",
+    hero_pill: "عرض استثماري سري · ٢٠٢٦",
+    hero_sub_line: "المدرسة الدولية للبرمجة — العراق",
+    hero_p: "نقدّم تعليم البرمجة العالمي لشباب العراق. نتوسع في ثلاث مدن بدون أي منافسة، مع طلب مثبت ونمو هائل متوقع في الصيف.",
+    hero_btn1: "🚀 شاهد توقعات النمو",
+    hero_btn2: "💼 شروط الاستثمار",
+    kpi_cities: "مدن",
+    kpi_pipeline: "خط الطلاب",
+    kpi_comp: "منافسين",
+    scroll: "مرر",
+    ab_badge: "🌍 أكثر من ٨٠ دولة حول العالم",
+    about_tag: "حول Algorithmics",
+    about_title: 'المدرسة الرائدة عالمياً في <span class="hi">تعليم البرمجة</span> للأطفال',
+    about_desc: "Algorithmics هي شبكة امتياز دولية في أكثر من ٨٠ دولة، تعلّم الأطفال من عمر ٥ إلى ١٧ سنة البرمجة من خلال منهج تفاعلي عالمي المستوى. انطلقنا في دهوك، العراق في سبتمبر ٢٠٢٥ — ونتوسع الآن بسرعة في المنطقة.",
+    f1_t: "دورات AI & Python",
+    f1_p: "منهج متقدم للمراهقين: الذكاء الاصطناعي، Python، ومهارات البرمجة التطبيقية.",
+    f2_t: "Visual Programming",
+    f2_p: "دورات تعليمية تفاعلية قائمة على Scratch للطلاب الصغار — بناء المنطق من خلال تصميم الألعاب.",
+    f3_t: "شراكات مدرسية",
+    f3_p: "شراكة مع مدارس ئاينده الأهلية (دهوك) وسلسلة مدارس الشرقية بأكثر من ٣٠٠٠ طالب (الموصل).",
+    f4_t: "بدون أي منافسة",
+    f4_p: "لا توجد مدارس برمجة للأطفال في دهوك أو زاخو أو الموصل. سوق غير مستغل بالكامل.",
+    tr_tag: "الأداء الحالي",
+    tr_title: 'طلب مثبت <span class="hi">من اليوم الأول</span>',
+    tr_desc: "انطلقنا في سبتمبر ٢٠٢٥ في دهوك. خلال أشهر أثبتنا جدوى السوق — وهذه فقط البداية.",
+    tr_label: "إجمالي خط الإيرادات · دهوك فقط · ٧ أشهر",
+    tr_s1: "طلاب نشطين", tr_s2: "أنواع دورات", tr_s3: "تسجيلات جديدة", tr_s4: "منذ الإطلاق",
+    tr_note: "كل هذا من دهوك فقط — قبل العطلة الصيفية، وقبل تفعيل الشراكات المدرسية بالكامل، وقبل التوسع إلى مدينتين جديدتين. قصة النمو الحقيقية تبدأ الآن. ↓",
+    proj_tag: "التوقعات حسب المدينة",
+    proj_title: 'ثلاث مدن، <span class="hi2">إمكانات هائلة</span>',
+    proj_desc: "كل مدينة محرك نمو فريد. معاً تشكّل توسعاً قوياً ومتنوعاً بفرص نمو ضخمة.",
+    cl_est: "قائمة", cl_new: "سوق جديد", cl_vol: "حجم عالي",
+    duhok_name: "دهوك", zakho_name: "زاخو", mosul_name: "الموصل",
+    duhok_sub: "تعمل منذ سبتمبر ٢٠٢٥ · مدرسة ئاينده الأهلية ١ و ٢",
+    zakho_sub: "إطلاق صيف ٢٠٢٦ · سوق بكر · بدون منافسة",
+    mosul_sub: "سلسلة مدارس الشرقية · أكثر من ٣٠٠٠ طالب · خط طلاب فوري",
+    pg_current: "طلاب حاليين", pg_surge: "ارتفاع التسجيل", pg_rev: "إيراد / طالب", pg_profit: "صافي ربح / طالب",
+    pg_entry: "دخول السوق", pg_comp: "منافسين", pg_pool: "مجموع الطلاب", pg_target: "نسبة التسجيل المستهدفة", pg_proj: "طلاب متوقعين",
+    duhok_note: "أول موسم صيفي على الإطلاق + مدرسة ئاينده الأهلية ١ و ٢ كقنوات مباشرة لاستقطاب الطلاب. الصيف هو ذروة الطلب على تعليم الأطفال في العراق — نتوقع ارتفاعاً كبيراً في التسجيل.",
+    zakho_note: "نفس اقتصاديات الوحدة القوية كدهوك. زاخو مدينة تركز على التعليم مع استثمار عالٍ من الأهالي في أطفالهم. ميزة الريادة الكاملة — نمتلك السوق من اليوم الأول.",
+    mosul_note: "إطلاق مباشر داخل سلسلة مدارس الشرقية بأكثر من ٣٠٠٠ طالب. نستهدف تسجيل أكثر من ٢٠٪. الأسعار أقل من دهوك لتناسب سوق الموصل — لكن الحجم الهائل يخلق أكبر فرصة ربح إجمالي بين المدن الثلاث.",
+    comb_tag: "النظرة الشاملة", comb_title: 'الصورة <span class="hi3">الكاملة</span>',
+    comb_desc: "مساهمة الإيرادات المتوقعة وإمكانات الربح عبر التوسع في المدن الثلاث.",
+    bar_t: "📊 ثقل الإيرادات المتوقع",
+    bar1: "🏙️ دهوك — قائمة + نمو صيفي",
+    bar2: "🏙️ زاخو — إطلاق جديد، أسعار مميزة",
+    bar3: "🏙️ الموصل — حجم كبير عبر الشرقية",
+    bar_note: "وصول الموصل لأكثر من ٣٠٠٠ طالب عبر الشرقية يجعلها مصدر الإيرادات الأكبر رغم انخفاض سعر الطالب الواحد",
+    profit_t: "💵 صافي الربح لكل طالب", per_st: "لكل طالب",
+    profit_note: "كل طالب إضافي يضيف مباشرة للأرباح. هامش الموصل الأقل يُعوّض بحجم أكثر من ٦٠٠ طالب متوقع من شراكة واحدة.",
+    road_t: "🗺️ خارطة النمو",
+    tl1_date: "سبتمبر ٢٠٢٥ — الآن", tl1_t: "إطلاق دهوك ✅", tl1_p: "٢٥ طالب، خط إيرادات $14,900. السوق مُثبت. شراكة مدرسة ئاينده الأهلية ١ و ٢ مؤمّنة.",
+    tl2_date: "صيف ٢٠٢٦", tl2_t: "توسع ثلاثي 🚀", tl2_p: "أول موسم صيفي في دهوك. زاخو والموصل ينطلقان بالتزامن. شراكة الشرقية (أكثر من ٣٠٠٠ طالب) تنطلق. تسجيل هائل متوقع.",
+    tl3_date: "خريف ٢٠٢٦", tl3_t: "عمليات ثلاث مدن", tl3_p: "جميع المدن تعمل بالكامل. إيرادات متكررة مع تقدم الطلاب عبر دورات متعددة المستويات. نمو متراكم عبر الفصول.",
+    tl4_t: "التوسع عبر العراق", tl4_p: "التوسع لمدن أكثر. تعميق الشراكات المدرسية. بناء الهيمنة كمزوّد تعليم البرمجة الأول في العراق بلا منازع.",
+    sum_tag: "محفزات النمو",
+    sum_title: '٦ أسباب لماذا هذا الصيف <span class="hi2">يغير كل شيء</span>',
+    sum_desc: "محفزات نمو متعددة تتقاطع في نفس الوقت.",
+    r1_t: "أول موسم صيفي على الإطلاق", r1_p: "انطلقنا في سبتمبر ٢٠٢٥. هذا أول صيف لنا — حيث تبحث العائلات في العراق عن أنشطة إثراء لأطفالهم خلال العطلة الطويلة.",
+    r2_t: "إطلاق مدينتين جديدتين", r2_p: "زاخو والموصل أسواق بكر بدون أي خيارات تعليم برمجة. نحن ننشئ الفئة بالكامل مع ميزة ريادة هائلة.",
+    r3_t: "سلسلة مدارس الشرقية — أكثر من ٣٠٠٠ طالب", r3_p: "في الموصل، ننطلق مباشرة داخل مدارس الشرقية بأكثر من ٣٠٠٠ طالب مسجل. نستهدف أكثر من ٢٠٪ تسجيل — أي أكثر من ٦٠٠ طالب من شراكة واحدة.",
+    r4_t: "شراكة مدرسة ئاينده الأهلية ١ و ٢", r4_p: "في دهوك، كلا فرعي ئاينده الآن قنوات مباشرة — يوجّهون العائلات التي تستثمر أصلاً في التعليم المتميز مباشرة إلى برامجنا.",
+    r5_t: "صفر منافسين في المدن الثلاث", r5_p: "لا توجد مدرسة برمجة للأطفال في دهوك أو زاخو أو الموصل. لسنا في منافسة — نحن نبني الفئة من الصفر مع ملكية كاملة للسوق.",
+    r6_t: "ربحية مثبتة لكل طالب", r6_p: "إيراد ٥٠٠–٦٠٠$ / صافي ربح ٢٠٠–٢٥٠$ في دهوك وزاخو. ١٠٠–١٨٠$ صافي ربح في الموصل. كل طالب يضيف مباشرة للأرباح بتكلفة هامشية قليلة.",
+    gal_tag: "عالمنا", gal_title: 'حيث يتعلم <span class="hi">بُناة المستقبل</span>',
+    gc1: "مساحات تعلم حديثة", gc2: "أدوات تفاعلية", gc3: "طلاب متفاعلون", gc4: "برمجة عملية", gc5: "أعمار ٥–١٧",
+    cta_tag: "الخطوات القادمة", cta_h2: 'لنبنِ <span class="glow-text">المستقبل</span> معاً',
+    cta_note: '<em>سعر وحجم الاستثمار سيُناقش ويُتفاوض عليه في الاجتماع الأول.</em><br><br>ندعو المستثمرين الاستراتيجيين للانضمام إلى فرصة استثمارية من الطابق الأرضي مع طلب مثبت، صفر منافسة، ونمو هائل قادم في ثلاث مدن عراقية.',
+    cta_call: "📞 اتصل بنا الآن", cta_review: "📊 مراجعة التوقعات",
+    cta_fine: "هذه الوثيقة سرية ومخصصة فقط للمستلم. جميع الأرقام مبنية على بيانات تشغيلية فعلية حتى أبريل ٢٠٢٦. التوقعات تمثل تقديرات الإدارة بناءً على شراكات مؤكدة وظروف السوق.",
+    footer_p: 'دهوك · زاخو · الموصل<br>المدرسة الدولية للبرمجة<br><br><span style="opacity:.4">© ٢٠٢٦ Algorithmics العراق · جميع الحقوق محفوظة</span>'
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const html = document.documentElement;
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const key = el.getAttribute('data-i');
+    if (T[lang] && T[lang][key] !== undefined) {
+      el.innerHTML = T[lang][key];
+    }
+  });
+}
+
+// Observers
+const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('v'); obs.unobserve(x.target) } }) }, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const bObs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) { x.target.querySelectorAll('.proj-fill').forEach((f, i) => { const w = f.style.width; f.style.width = '0'; setTimeout(() => { f.style.width = w }, 200 + i * 300) }); bObs.unobserve(x.target) } }) }, { threshold: .3 });
+document.querySelectorAll('.proj-bar-wrap').forEach(el => bObs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }) }) });
+
+function animateNum(el, target, suffix = '') { let c = 0; const s = Math.max(1, Math.floor(target / 25)); const t = setInterval(() => { c += s; if (c >= target) { c = target; clearInterval(t) } el.textContent = c + suffix }, 35) }
+setTimeout(() => { document.querySelectorAll('.kpi .n').forEach(el => { const t = el.textContent; const m = t.match(/\d+/); if (!m) return; const n = parseInt(m[0]); const suf = t.replace(/\d+/, ''); animateNum(el, n, suf) }) }, 1000);
+</script>
+</body>
+</html>
